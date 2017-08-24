@@ -1,6 +1,7 @@
 package Croco.Prospecting;
 
 import Croco.Prospecting.Tab.CreativeTabProspecting;
+import Croco.Prospecting.item.ModItems;
 import Croco.Prospecting.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
@@ -18,19 +19,21 @@ public class Prospecting {
 
     @SidedProxy(clientSide = "Croco.Prospecting.proxy.ClientProxy", serverSide = "Croco.Prospecting.proxy.CommonProxy")
         public static CommonProxy proxy;
+
     @Mod.Instance
         public static Prospecting instance;
 
-    public static CreativeTabProspecting tabProspecting;
+        public static CreativeTabProspecting tabProspecting;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-
+        tabProspecting = new CreativeTabProspecting(CreativeTabs.getNextID(), "tab_Prospecting");
+        ModItems.preInit();
         proxy.preInit(event);
+
     }
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        tabProspecting = new CreativeTabProspecting(CreativeTabs.getNextID(), "tab_Prospecting");
         proxy.init(event);
     }
     @EventHandler
