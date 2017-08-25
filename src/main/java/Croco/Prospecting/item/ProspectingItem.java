@@ -19,7 +19,7 @@ public class ProspectingItem extends Item{
     public ProspectingItem(String name) {
         setUnlocalizedName(name);
         setCreativeTab(Prospecting.tabProspecting);
-        setMaxStackSize(1);
+        setMaxStackSize(64);
     }
 
     @Override
